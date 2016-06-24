@@ -1,0 +1,33 @@
+// java code to create a deck of card
+
+public class card_deck
+{
+    
+    static String[][] card = new String[13][4];
+    static final String[] final_name =
+    {"one" , "two" , "three" , "four" , "five" , "six" ,
+     "seven" , "eight" , "nine" , "ten" , "J" , "Q" , "K" };
+    static final String[] final_suite =
+    { "spade" , "club" , "diamond" , "heart" };
+    public static void create_deck()
+    {
+        int suite = 0;                  // count what suite we are right now
+                                        // 0 = spade
+                                        // 1 = club
+                                        // 2 = diamond
+                                        // 3 = heart
+        int count = 0;
+        for (suite=0;suite<4;suite++)
+        for (count=0;count<13;count++)
+        {
+            card[count][suite] = final_name[count] + " of " +final_suite[suite];
+            System.out.println(card[count][suite]+"\n");
+        }      
+    }
+    
+    public static void main(String[] args)
+    { 
+        create_deck();
+    }
+    
+}
