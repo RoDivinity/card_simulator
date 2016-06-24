@@ -27,7 +27,27 @@ public class card_deck
             deck_count ++;
         }      
     }
-    //shuffle_deck
+    //shuffle_deck has been added
+    
+    public static void swap(String[] deck, int i, int change)
+    {
+        String swap_card = deck[i];
+        deck[i] = deck[change];
+        deck[change] = swap_card;
+    }
+    
+    public static void shuffle_deck(String[] deck)
+    {  
+        int change = 0;
+        Random rand = new Random();
+        rand.nextInt();
+        for (int i = 0; i < 52; i++)
+        {
+            change = i + rand.nextInt(52 - i);
+            swap(deck, i, change);
+        }
+    }
+    
     public static void main(String[] args)
     { 
         create_deck();
