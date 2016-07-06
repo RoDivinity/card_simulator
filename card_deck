@@ -1,15 +1,27 @@
 // java code to create a deck of card
 
+
+/**
+ * @version 1.0.0
+ * @author Vodka
+ */
 public class card_deck
-{
-    static String [] card = new String [52];
-    static String[][] card_name = new String[13][4];
-    static final String[] final_name =
-    {"Ace" , "two" , "three" , "four" , "five" , "six" ,
-     "seven" , "eight" , "nine" , "ten" , "Jack" , "Queen" , "King" };
-    static final String[] final_suite =
-    { "spade" , "club" , "diamond" , "heart" };
-    public static void create_deck()
+{   static private int test_num = 0;
+    String [] card = new String [52];
+    //static String[][] card_name = new String[13][4];
+    static final String[] final_rank =
+    {"1" , "2" , "3" , "4" , "5" , "6" ,
+     "7" , "8" , "9" , "10" , "J" , "Q" , "K" };
+    static final char[] final_suite =
+    { (char)'\u2660' , (char) '\u2663' , (char) '\u2666' , (char) '\u2764' };
+    
+    //initialize a card deck
+    public card_deck ()
+    {
+        card = create_deck();
+    }
+    
+    public String[] create_deck()
     {
         int suite = 0;                  // count what suite we are right now
                                         // 0 = spade
@@ -22,35 +34,47 @@ public class card_deck
         for (count=0;count<13;count++)
         {
            //card_name[count][suite] = final_name[count] + " of " +final_suite[suite];
-            card[deck_count]= final_name[count] + " of " +final_suite[suite];
+            card[deck_count]= final_rank[count] +final_suite[suite];
             System.out.println(card[deck_count]+"\n");
             deck_count ++;
-        }      
+        }    
+        return card;
     }
-    //shuffle_deck has been added
     
-    public static void swap(String[] deck, int i, int change)
+    //method to create random numbers
+    public int randomInt(int min, int max)
+    {
+        int r_Number = ThreadLocalRandom.current().nextInt(min, max+1);
+        return r_Number;
+    }
+    
+    public void swap(String[] deck, int i, int change)
     {
         String swap_card = deck[i];
         deck[i] = deck[change];
         deck[change] = swap_card;
     }
     
-    public static void shuffle_deck(String[] deck)
+    public void shuffle_deck(String[] deck)
     {  
-        int change = 0;
         Random rand = new Random();
         rand.nextInt();
         for (int i = 0; i < 52; i++)
         {
-            change = i + rand.nextInt(52 - i);
+            int change = i + rand.nextInt(52 - i);
             swap(deck, i, change);
         }
     }
     
+    public void deal_card(String[] deck, int num_player)
+    {
+        //should I use pop(), push(), peek()?
+    }
+        
     public static void main(String[] args)
     { 
-        create_deck();
-    }
-    
+      card_deck TestSet = new card_deck();
+      System.out.println(java.util.Arrays.toString(TestSet.card));  
+     }
 }
+
