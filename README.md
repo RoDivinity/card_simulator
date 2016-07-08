@@ -16,4 +16,8 @@ Black Jack logic and game
  @Date: July 7th 2016
  * Coded character for card name                @!Done
  => Create a stack for deck to deal card        @!Done
- => Finish Black Jack game rule                 @!InProgress
+ => Finish Black Jack game rule                 @!Done
+
+<-- Version 1.1.0 -->
+ Add class player: %feature: Socket, Client-sided @!InProgress 
+ 
